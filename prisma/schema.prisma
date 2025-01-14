@@ -22,6 +22,9 @@ model User {
   title          String
   firstName      String
   lastName       String
+  otp            String?
+  otpExpiration  DateTime?
+  isVerified     Boolean  @default(false)
   dateOfBirth    DateTime?
   gender         String? // Optional field
   country        String?
