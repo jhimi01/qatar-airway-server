@@ -17,14 +17,14 @@ model User {
   id             String  @id @default(uuid())
   email          String  @unique
   password       String
-  countryCode    Int
+  countryCode    String
   mobileNumber   String
   title          String
   firstName      String
   lastName       String
-  dateOfBirth    DateTime
+  dateOfBirth    DateTime?
   gender         String? // Optional field
-  country        String
-  createdAt      DateTime @default(now())
-  updatedAt      DateTime @updatedAt
+  country        String?
+  createdAt      DateTime? @default(now())
+  updatedAt      DateTime? @updatedAt
 }
