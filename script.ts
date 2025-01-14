@@ -81,7 +81,7 @@ app.post("/api/signup", async (req: any, res: any) => {
     const hashedPassword = await bcrypt.hash(password, 10);
 
     // Create new user
-     await prisma.user.create({
+    await prisma.user.create({
       data: {
         email,
         password: hashedPassword,
@@ -98,18 +98,9 @@ app.post("/api/signup", async (req: any, res: any) => {
       },
     });
 
-    // const token = jwt.sign(
-    //   { userId: id: id, email: email },
-    //   "process.env.JWT_SECRET_KEY", // Secret key (should be an environment variable)
-    //   { expiresIn: "7d" }
-    // );
-  
-    // res.json({ message: "Logged in successfully", token });
-
     // Send OTP to email
     await sendOTPEmail(email, otp);
     res.status(200).send("OTP sent to your email");
-
   } catch (err) {
     console.error("Error during signup process:", err);
     res.status(500).send("Error during signup process");
@@ -141,7 +132,6 @@ app.post("/api/verify-otp", async (req: any, res: any) => {
     });
 
     res.status(200).send("User verified successfully");
-
   } catch (err) {
     console.error("Error during OTP verification:", err);
     res.status(500).send("Error during OTP verification");
@@ -172,6 +162,10 @@ app.post("/api/login", async (req: any, res: any) => {
 
   res.json({ message: "Logged in successfully", token });
 });
+
+
+
+
 
 app.get("/users", async (req: any, res: any) => {
   const users = await prisma.user.findMany();
