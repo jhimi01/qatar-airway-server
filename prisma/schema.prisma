@@ -17,7 +17,7 @@ model User {
   id            String    @id @default(uuid())
   email         String    @unique
   password      String
-  countryCode   String  //..............
+  countryCode   String
   nid           Int?
   mobileNumber  String
   title         String
@@ -31,4 +31,15 @@ model User {
   country       String?
   createdAt     DateTime? @default(now())
   updatedAt     DateTime? @updatedAt
+
+  // Relation to LoggedInUser
+  loggedInUser  LoggedInUser?
+}
+
+model LoggedInUser {
+  id          String  @id @default(uuid())
+  verifiedOtp Boolean
+  token       String
+  user        User    @relation(fields: [userId], references: [id])
+  userId      String  @unique
 }
