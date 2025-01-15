@@ -17,8 +17,8 @@ model User {
   id            String    @id @default(uuid())
   email         String    @unique
   password      String
-  countryCode   String
-  nid           Int?
+  address       String
+  nid           String?
   mobileNumber  String
   title         String
   firstName     String
@@ -33,7 +33,7 @@ model User {
   updatedAt     DateTime? @updatedAt
 
   // Relation to LoggedInUser
-  loggedInUser  LoggedInUser?
+  loggedInUser LoggedInUser?
 }
 
 model LoggedInUser {

@@ -12,9 +12,10 @@ export const signup = async (req: any, res: any) => {
     title,
     dateOfBirth,
     gender,
-    countryCode,
+    address,
     mobileNumber,
     country,
+    nid
   } = req.body;
 
   try {
@@ -38,9 +39,10 @@ export const signup = async (req: any, res: any) => {
         gender,
         otp,
         otpExpiration,
-        countryCode,
+        address,
         mobileNumber,
         country,
+        nid
       },
     });
 
