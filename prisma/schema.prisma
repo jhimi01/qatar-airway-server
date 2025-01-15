@@ -14,20 +14,21 @@ datasource db {
 }
 
 model User {
-  id             String  @id @default(uuid())
-  email          String  @unique
-  password       String
-  countryCode    String
-  mobileNumber   String
-  title          String
-  firstName      String
-  lastName       String
-  otp            String?
-  otpExpiration  DateTime?
-  isVerified     Boolean  @default(false)
-  dateOfBirth    DateTime?
-  gender         String? // Optional field
-  country        String?
-  createdAt      DateTime? @default(now())
-  updatedAt      DateTime? @updatedAt
+  id            String    @id @default(uuid())
+  email         String    @unique
+  password      String
+  countryCode   String  //..............
+  nid           Int?
+  mobileNumber  String
+  title         String
+  firstName     String
+  lastName      String
+  otp           String?
+  otpExpiration DateTime?
+  isVerified    Boolean   @default(false)
+  dateOfBirth   DateTime?
+  gender        String? // Optional field
+  country       String?
+  createdAt     DateTime? @default(now())
+  updatedAt     DateTime? @updatedAt
 }
