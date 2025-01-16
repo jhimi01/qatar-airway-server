@@ -1,5 +1,4 @@
 import prisma from "../models/userModel";
-
 import jwt from "jsonwebtoken";
 
 export const verifyOTPLogin = async (req: any, res: any) => {
