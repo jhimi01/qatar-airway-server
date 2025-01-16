@@ -6,7 +6,7 @@ import { getUserData } from "../controllers/loggedinUserController";
 import { editProfileController } from "../controllers/editProfileController";
 import { imageEditController } from "../controllers/imageEditController";
 import { logOutController } from "../controllers/logOutController";
-import { googleAuth, googleCallback } from "../controllers/googleAuthController";
+import { resetPasswordController } from "../controllers/resetPasswordController";
 
 const router = express.Router();
 
@@ -18,10 +18,7 @@ router.get("/loggedin-user", getUserData);
 router.patch("/edit-profile", editProfileController);
 router.patch("/edit-image", imageEditController);
 router.delete("/logout", logOutController);
-
-// Google authentication routes
-router.get('/google', googleAuth);
-router.get('/google/callback', googleCallback);
+router.post("/reset-password", resetPasswordController);
 
 
 

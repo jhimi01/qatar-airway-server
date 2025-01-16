@@ -15,7 +15,7 @@ export const signup = async (req: any, res: any) => {
     address,
     mobileNumber,
     country,
-    nid
+    nid,
   } = req.body;
 
   try {
@@ -42,7 +42,7 @@ export const signup = async (req: any, res: any) => {
         address,
         mobileNumber,
         country,
-        nid
+        nid,
       },
     });
 
