@@ -31,6 +31,7 @@ model User {
   country       String?
   createdAt     DateTime? @default(now())
   updatedAt     DateTime? @updatedAt
+  img           String?
 
   // Relation to LoggedInUser
   loggedInUser LoggedInUser?

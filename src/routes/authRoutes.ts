@@ -4,6 +4,7 @@ import { login } from "../controllers/loginController";
 import { verifyOTPLogin } from "../controllers/verifyOtpLogin";
 import { getUserData } from "../controllers/loggedinUserController";
 import { editProfileController } from "../controllers/editProfileController";
+import { imageEditController } from "../controllers/imageEditController";
 
 const router = express.Router();
 
@@ -13,6 +14,7 @@ router.post("/login", login);
 router.post("/verify-otp-login", verifyOTPLogin);
 router.get("/loggedin-user", getUserData);
 router.patch("/edit-profile", editProfileController);
+router.patch("/edit-image", imageEditController);
 
 
 export default router;
