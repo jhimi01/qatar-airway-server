@@ -43,7 +43,7 @@ export const resetPasswordController = async (req: any, res: any) => {
     const newToken = jwt.sign(
       { userId: user.id, email: user.email },
       process.env.JWT_SECRET_KEY as string,
-      { expiresIn: "1h" } // You can adjust the expiry time as needed
+      { expiresIn: "7d" } // You can adjust the expiry time as needed
     );
 
     // Update the logged-in user with the new token
@@ -55,7 +55,7 @@ export const resetPasswordController = async (req: any, res: any) => {
         create: {
           userId: user.id,
           token: newToken, // Create a new record with the new token
-          verifiedOtp: false, // Add a default value for verifiedOtp
+          verifiedOtp: true, // Add a default value for verifiedOtp
         },
       });
       
