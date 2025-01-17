@@ -28,13 +28,13 @@ export const login = async (req: any, res: any) => {
     // Find the user in the database
     const user = await prisma.user.findUnique({ where: { email } });
     if (!user) {
-      return res.status(401).json({ error: "Invalid email or password" });
+      return res.status(401).json({ error: "Invalid email" });
     }
 
     // Compare password (hashed)
     const match = await bcrypt.compare(password, user.password);
     if (!match) {
-      return res.status(401).json({ error: "Invalid email or password" });
+      return res.status(401).json({ error: "Invalid password" });
     }
 
     // Generate OTP and send it to user's email
