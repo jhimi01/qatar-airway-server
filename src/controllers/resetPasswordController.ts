@@ -48,17 +48,16 @@ export const resetPasswordController = async (req: any, res: any) => {
 
     // Update the logged-in user with the new token
     await prisma.loggedInUser.upsert({
-        where: { userId: user.id },
-        update: {
-          token: newToken, // Update token
-        },
-        create: {
-          userId: user.id,
-          token: newToken, // Create a new record with the new token
-          verifiedOtp: true, // Add a default value for verifiedOtp
-        },
-      });
-      
+      where: { userId: user.id },
+      update: {
+        token: newToken, // Update token
+      },
+      create: {
+        userId: user.id,
+        token: newToken, // Create a new record with the new token
+        verifiedOtp: true, // Add a default value for verifiedOtp
+      },
+    });
 
     return res.status(200).json({
       message: "Password updated successfully",

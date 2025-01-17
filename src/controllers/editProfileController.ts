@@ -9,7 +9,9 @@ export const editProfileController = async (req: any, res: any) => {
 
   try {
     // Decode token to extract the userId
-    const decoded = jwt.verify(token, process.env.JWT_SECRET_KEY as string) as { userId: string };
+    const decoded = jwt.verify(token, process.env.JWT_SECRET_KEY as string) as {
+      userId: string;
+    };
 
     // Extract the userId from loggedInUser
     const { userId } = decoded;
