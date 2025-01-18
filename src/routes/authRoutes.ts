@@ -7,6 +7,7 @@ import { editProfileController } from "../controllers/editProfileController";
 import { imageEditController } from "../controllers/imageEditController";
 import { logOutController } from "../controllers/logOutController";
 import { resetPasswordController } from "../controllers/resetPasswordController";
+import { googleLoginController, googleSignupController } from "../controllers/googleLoginController";
 
 const router = express.Router();
 
@@ -19,6 +20,8 @@ router.patch("/edit-profile", editProfileController);
 router.patch("/edit-image", imageEditController);
 router.delete("/logout", logOutController);
 router.post("/reset-password", resetPasswordController);
+router.post("/google-signup", googleSignupController);
+router.post("/google-login", googleLoginController);
 
 
 

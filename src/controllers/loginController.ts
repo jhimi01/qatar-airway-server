@@ -9,7 +9,6 @@ export const login = async (req: any, res: any) => {
   const { email, password, recaptchaToken } = req.body;
 
   try {
-    // Verify reCAPTCHA token with Google's API
     const response = await axios.post(
       `https://www.google.com/recaptcha/api/siteverify`,
       null,
@@ -31,6 +30,10 @@ export const login = async (req: any, res: any) => {
       return res.status(401).json({ error: "Invalid email" });
     }
 
+    if (!user || !user.password) {
+      return res.status(400).json({ error: "Invalid credentials" });
+    }
+    
     // Compare password (hashed)
     const match = await bcrypt.compare(password, user.password);
     if (!match) {
@@ -39,7 +42,7 @@ export const login = async (req: any, res: any) => {
 
     // Generate OTP and send it to user's email
     const otp = generateOTP();
-    const otpExpiration = new Date(Date.now() + 5 * 60 * 1000); // 5-minute expiration
+    const otpExpiration = new Date(Date.now() + 5 * 60 * 1000);
 
     await prisma.user.update({
       where: { email },

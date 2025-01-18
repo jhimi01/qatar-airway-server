@@ -3,7 +3,7 @@ import prisma from "../models/userModel";
 
 // Middleware or controller action to fetch logged-in user data
 export const getUserData = async (req: any, res: any) => {
-  const token = req.headers.authorization?.split(" ")[1]; // Assuming the token is sent in the Authorization header (Bearer token)
+  const token = req.headers.authorization?.split(" ")[1];
 
   if (!token) {
     return res.status(401).json({ error: "Authorization token is required" });

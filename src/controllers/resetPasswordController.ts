@@ -24,6 +24,9 @@ export const resetPasswordController = async (req: any, res: any) => {
       return res.status(404).send("User not found");
     }
 
+    if (!user || !user.password) {
+      return res.status(400).json({ error: "User or password is missing." });
+    }
     // Compare the old password with the hashed password in the database
     const isOldPasswordValid = await bcrypt.compare(oldPassword, user.password);
     if (!isOldPasswordValid) {
