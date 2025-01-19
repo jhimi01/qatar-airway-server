@@ -6,9 +6,9 @@ import { getUserData } from "../controllers/loggedinUserController";
 import { editProfileController } from "../controllers/editProfileController";
 import { imageEditController } from "../controllers/imageEditController";
 import { logOutController } from "../controllers/logOutController";
-import { resetPasswordController } from "../controllers/resetPasswordController";
+import { changePasswordController } from "../controllers/changePasswordController";
 import { googleLoginController, googleSignupController } from "../controllers/googleLoginController";
-import { forgotPasswordController } from "../controllers/forgotPasswordController";
+import { forgotPasswordController, resetPasswordController } from "../controllers/forgotPasswordController";
 
 const router = express.Router();
 
@@ -20,10 +20,11 @@ router.get("/loggedin-user", getUserData);
 router.patch("/edit-profile", editProfileController);
 router.patch("/edit-image", imageEditController);
 router.delete("/logout", logOutController);
-router.post("/change-password", resetPasswordController);
+router.post("/change-password", changePasswordController);
 router.post("/google-signup", googleSignupController);
 router.post("/google-login", googleLoginController);
 router.post("/sendemail-forgotpassword", forgotPasswordController);
+router.post("/reset-forgotpassword/:id/:token", resetPasswordController);
 
 
 

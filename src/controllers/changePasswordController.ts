@@ -2,7 +2,7 @@ import prisma from "../models/userModel"; // Your prisma instance
 import bcrypt from "bcryptjs"; // Import bcrypt to hash passwords
 import jwt from "jsonwebtoken";
 
-export const resetPasswordController = async (req: any, res: any) => {
+export const changePasswordController = async (req: any, res: any) => {
   const token = req.headers.authorization?.split(" ")[1]; // Assuming Bearer token in headers
   if (!token) {
     return res.status(401).json({ error: "Authorization token is required" });
@@ -71,3 +71,6 @@ export const resetPasswordController = async (req: any, res: any) => {
     return res.status(500).send("Error during password reset");
   }
 };
+
+
+
