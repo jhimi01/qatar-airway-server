@@ -7,8 +7,12 @@ export const changePasswordController = async (req: any, res: any) => {
   if (!token) {
     return res.status(401).json({ error: "Authorization token is required" });
   }
-
   const { email, oldPassword, newPassword } = req.body;
+
+  if (!oldPassword) {
+    return res.status(401).json({ error: "you can't change password" });
+  }
+
 
   try {
     // Decode token to extract the userId
