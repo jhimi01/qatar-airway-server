@@ -3,13 +3,15 @@ import prisma from "../models/userModel";
 
 // Middleware or controller action to fetch logged-in user data
 export const getUserData = async (req: any, res: any) => {
-  const token = req.headers.authorization?.split(" ")[1];
-
-  if (!token) {
-    return res.status(401).json({ error: "Authorization token is required" });
-  }
-
+  
+  
   try {
+    const token = req.headers.authorization?.split(" ")[1];
+  
+    if (!token) {
+      return res.status(401).json({ error: "Authorization token is required" });
+    }
+    // console.log("Received token:", token);
     // Verify the JWT token
     const decoded = jwt.verify(token, process.env.JWT_SECRET_KEY as string) as { userId: string };
     
